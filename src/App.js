@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Home from "./components/pages/Home";
+import View from "./components/Books/View";
+import Edit from "./components/Books/Edit";
 
+import './index.css'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component = {Home} /> 
+          <Route exact path="/view/:id" component = {View} /> 
+          <Route exact path="/edit/:id" component = {Edit} /> 
+        </Switch>
+      </Router>
+    </>
   );
 }
 
 export default App;
+
+// json-server --watch db.json --port 3333
